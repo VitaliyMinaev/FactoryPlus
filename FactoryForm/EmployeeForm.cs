@@ -1,4 +1,5 @@
 ﻿using FactoryForm.Domain;
+using FactoryForm.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,32 @@ namespace FactoryForm
             _factory = currentFactory;
             _workshops = workShops;
             PrepareEmployeeElements();
+        }
+        public EmployeeForm(PersonBase person, string workShopTitle)
+        {
+            InitializeComponent();
+            _workshops = new[] { workShopTitle };
+            PrepareEmployeeElements();
+
+            addPersonButton.Enabled = false;
+            SetInputsToCurrentUser(person);
+        }
+
+        private void SetInputsToCurrentUser(PersonBase person)
+        {
+            nameTitleBox.Text = person.Name;
+            if(person is Employee)
+            {
+                var employee = (Employee)person;
+                PrepareEmployeeElements();
+                higherTechnicalEducationRadioButton.Checked = employee.HigherTechnicalEducation;
+            }
+            else if(person is Master)
+            {
+                var master = (Master)person;
+                PrepareMasterElements();
+                certificatesnumericUpDown.Value = master.CountOfCertificates;
+            }
         }
 
         private void PrepareEmployeeElements()

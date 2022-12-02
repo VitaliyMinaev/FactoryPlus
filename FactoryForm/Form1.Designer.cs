@@ -30,9 +30,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.personsCompoBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.FireMasterButton = new System.Windows.Forms.Button();
-            this.FireEmployeeButton = new System.Windows.Forms.Button();
             this.ProfitFromEmployeeTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.MasterSalaryTextBox = new System.Windows.Forms.TextBox();
@@ -70,6 +70,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.workshopFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openPersonButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -81,9 +82,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.openPersonButton);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.personsCompoBox);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.FireMasterButton);
-            this.panel1.Controls.Add(this.FireEmployeeButton);
             this.panel1.Controls.Add(this.ProfitFromEmployeeTextBox);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.MasterSalaryTextBox);
@@ -106,6 +108,33 @@
             this.panel1.Size = new System.Drawing.Size(385, 580);
             this.panel1.TabIndex = 9;
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(231, 539);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(135, 33);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Fire person";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.firePersonButton_Click);
+            // 
+            // personsCompoBox
+            // 
+            this.personsCompoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.personsCompoBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.personsCompoBox.FormattingEnabled = true;
+            this.personsCompoBox.Location = new System.Drawing.Point(19, 502);
+            this.personsCompoBox.Name = "personsCompoBox";
+            this.personsCompoBox.Size = new System.Drawing.Size(347, 33);
+            this.personsCompoBox.TabIndex = 33;
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -120,36 +149,6 @@
             this.button1.Text = "Hire person";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.hirePersonButton_Click);
-            // 
-            // FireMasterButton
-            // 
-            this.FireMasterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FireMasterButton.BackColor = System.Drawing.SystemColors.Control;
-            this.FireMasterButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FireMasterButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FireMasterButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FireMasterButton.Location = new System.Drawing.Point(166, 503);
-            this.FireMasterButton.Name = "FireMasterButton";
-            this.FireMasterButton.Size = new System.Drawing.Size(135, 33);
-            this.FireMasterButton.TabIndex = 31;
-            this.FireMasterButton.Text = "Fire master";
-            this.FireMasterButton.UseVisualStyleBackColor = false;
-            this.FireMasterButton.Click += new System.EventHandler(this.FireMasterButton_Click);
-            // 
-            // FireEmployeeButton
-            // 
-            this.FireEmployeeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FireEmployeeButton.BackColor = System.Drawing.SystemColors.Control;
-            this.FireEmployeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FireEmployeeButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FireEmployeeButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FireEmployeeButton.Location = new System.Drawing.Point(166, 464);
-            this.FireEmployeeButton.Name = "FireEmployeeButton";
-            this.FireEmployeeButton.Size = new System.Drawing.Size(135, 33);
-            this.FireEmployeeButton.TabIndex = 29;
-            this.FireEmployeeButton.Text = "Fire employee";
-            this.FireEmployeeButton.UseVisualStyleBackColor = false;
-            this.FireEmployeeButton.Click += new System.EventHandler(this.FireEmployeeButton_Click);
             // 
             // ProfitFromEmployeeTextBox
             // 
@@ -320,9 +319,9 @@
             this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddBtn.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AddBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AddBtn.Location = new System.Drawing.Point(313, 464);
+            this.AddBtn.Location = new System.Drawing.Point(231, 464);
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(53, 33);
+            this.AddBtn.Size = new System.Drawing.Size(135, 33);
             this.AddBtn.TabIndex = 9;
             this.AddBtn.Text = "Add";
             this.AddBtn.UseVisualStyleBackColor = false;
@@ -608,6 +607,21 @@
             this.employeeFormToolStripMenuItem.Text = "Employee form";
             this.employeeFormToolStripMenuItem.Click += new System.EventHandler(this.employeeFormToolStripMenuItem_Click);
             // 
+            // openPersonButton
+            // 
+            this.openPersonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.openPersonButton.BackColor = System.Drawing.SystemColors.Control;
+            this.openPersonButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.openPersonButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openPersonButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.openPersonButton.Location = new System.Drawing.Point(90, 539);
+            this.openPersonButton.Name = "openPersonButton";
+            this.openPersonButton.Size = new System.Drawing.Size(135, 33);
+            this.openPersonButton.TabIndex = 35;
+            this.openPersonButton.Text = "Get info";
+            this.openPersonButton.UseVisualStyleBackColor = false;
+            this.openPersonButton.Click += new System.EventHandler(this.openPersonButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -660,8 +674,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox CountOfMasterTextBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button FireMasterButton;
-        private System.Windows.Forms.Button FireEmployeeButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button CompareFactoriesButton;
         private System.Windows.Forms.Label label15;
@@ -678,5 +690,8 @@
         private System.Windows.Forms.ToolStripMenuItem workshopFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeFormToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox personsCompoBox;
+        private System.Windows.Forms.Button openPersonButton;
     }
 }

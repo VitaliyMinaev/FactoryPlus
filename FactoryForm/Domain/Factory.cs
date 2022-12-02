@@ -187,11 +187,11 @@ namespace FactoryForm.Domain
                 return false;
             }
         }
-        public bool FirePerson(string personId)
+        public bool FirePerson(Guid id)
         {
             foreach (var item in _employees)
             {
-                if (item.Value.PersonId == personId)
+                if (item.Value.PersonId == id.ToString())
                 {
                     _employees.Remove(item.Key);
                     return true;
@@ -199,6 +199,46 @@ namespace FactoryForm.Domain
             }
 
             return false;
+        }
+        public bool FirePerson(string personName)
+        {
+            foreach (var item in _employees)
+            {
+                if (item.Value.Name == personName)
+                {
+                    _employees.Remove(item.Key);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        public IEnumerable<PersonBase> GetPersons()
+        {
+            foreach (var item in _employees)
+            {
+                yield return item.Value;
+            }
+        }
+        public PersonBase GetPersonByName(string personName)
+        {
+            foreach (var item in _employees)
+            {
+                if (item.Value.Name == personName)
+                {
+                    return item.Value;
+                }
+            }
+
+            throw new ArgumentException($"Can not find person with name: {personName}");
+        }
+
+        public IEnumerable<Workshop> GetWorkshops()
+        {
+            foreach (var item in _workShops)
+            {
+                yield return item;
+            }
         }
 
         public int CompareTo(Factory other)

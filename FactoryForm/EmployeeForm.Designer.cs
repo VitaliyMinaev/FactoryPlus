@@ -44,7 +44,7 @@
             this.workshopsCompoBox = new System.Windows.Forms.ComboBox();
             this.nameTitleBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Unload = new System.Windows.Forms.Button();
+            this.addPersonButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.certificatesnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salaryNumericUpDown)).BeginInit();
@@ -278,28 +278,28 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Name";
             // 
-            // Unload
+            // addPersonButton
             // 
-            this.Unload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.addPersonButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Unload.BackColor = System.Drawing.SystemColors.Control;
-            this.Unload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Unload.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Unload.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Unload.Location = new System.Drawing.Point(9, 415);
-            this.Unload.Name = "Unload";
-            this.Unload.Size = new System.Drawing.Size(146, 37);
-            this.Unload.TabIndex = 14;
-            this.Unload.Text = "Add";
-            this.Unload.UseVisualStyleBackColor = false;
-            this.Unload.Click += new System.EventHandler(this.addPerson_Click);
+            this.addPersonButton.BackColor = System.Drawing.SystemColors.Control;
+            this.addPersonButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addPersonButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addPersonButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.addPersonButton.Location = new System.Drawing.Point(9, 415);
+            this.addPersonButton.Name = "addPersonButton";
+            this.addPersonButton.Size = new System.Drawing.Size(146, 37);
+            this.addPersonButton.TabIndex = 14;
+            this.addPersonButton.Text = "Add";
+            this.addPersonButton.UseVisualStyleBackColor = false;
+            this.addPersonButton.Click += new System.EventHandler(this.addPerson_Click);
             // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 456);
-            this.Controls.Add(this.Unload);
+            this.Controls.Add(this.addPersonButton);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(400, 503);
             this.Name = "EmployeeForm";
@@ -330,7 +330,7 @@
         private System.Windows.Forms.RadioButton higherTechnicalEducationRadioButton;
         private System.Windows.Forms.NumericUpDown salaryNumericUpDown;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button Unload;
+        private System.Windows.Forms.Button addPersonButton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown certificatesnumericUpDown;
         private System.Windows.Forms.Panel higherEducationPanel;

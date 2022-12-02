@@ -9,6 +9,7 @@ using System.Linq;
 using FactoryForm.Parsers;
 using FactoryForm.Helpers;
 using static System.Windows.Forms.ListView;
+using FactoryForm.Domain.Abstract;
 
 namespace FactoryForm
 {
@@ -66,26 +67,24 @@ namespace FactoryForm
 
         private void factoriesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (factoriesListView.SelectedItems.Count > 0)
-            {
-                var factory = (Factory)factoriesListView.SelectedItems[0].Tag;
-
-                if (factory != null)
-                {
-                    TitleTextBox.Text               = factory.Title;
-                    CountOfWorkshopsTextBox.Text    = factory.CountOfWorkshop.ToString();
-                    CountOfEmployeeTextBox.Text     = factory.CountOfEmployee.ToString();
-                    CountOfMasterTextBox.Text       = factory.CountOfMasters.ToString();
-                    EmployeeSalaryTextBox.Text      = factory.EmployeeSalary.ParseCentsToString();
-                    MasterSalaryTextBox.Text        = factory.MasterSalary.ParseCentsToString();
-                    ProfitFromEmployeeTextBox.Text  = factory.ProfitFromEmployee.ParseCentsToString();
-                    ProfitFromMasterTextBox.Text    = factory.ProfitFromMaster.ParseCentsToString();
-                }
-            }
-            else
+            Factory factory = GetSelectedFactory();
+            if (factory == null)
             {
                 ClearInputs();
+                return;
             }
+
+            TitleTextBox.Text = factory.Title;
+            CountOfWorkshopsTextBox.Text = factory.CountOfWorkshop.ToString();
+            CountOfEmployeeTextBox.Text = factory.CountOfEmployee.ToString();
+            CountOfMasterTextBox.Text = factory.CountOfMasters.ToString();
+            EmployeeSalaryTextBox.Text = factory.EmployeeSalary.ParseCentsToString();
+            MasterSalaryTextBox.Text = factory.MasterSalary.ParseCentsToString();
+            ProfitFromEmployeeTextBox.Text = factory.ProfitFromEmployee.ParseCentsToString();
+            ProfitFromMasterTextBox.Text = factory.ProfitFromMaster.ParseCentsToString();
+
+            personsCompoBox.DataSource = factory.GetPersons()
+                .Select(x => x.Name).ToArray();
         }
 
         private async void Load_Click(object sender, EventArgs e)
@@ -310,10 +309,102 @@ namespace FactoryForm
                 return;
 
             var factory = (Factory)factoriesListView.SelectedItems[0].Tag;
-            var workshopForm = new EmployeeForm(factory, 
-                new[] { "work 1", "work 2"});
+            if (factory == null)
+                return;
 
-            workshopForm.Show();
+            var employeeForm = new EmployeeForm(factory,
+                new[] { "work 1", "work 2" });
+            
+            employeeForm.ShowDialog();
+            UpdateInputs();
+        }
+
+        private Factory GetSelectedFactory()
+        {
+            if (factoriesListView.SelectedItems.Count == 0)
+               return null;
+
+            var factory = (Factory)factoriesListView.SelectedItems[0].Tag;
+
+            if (factory == null)
+                return null;
+
+            return factory;
+        }
+
+        private void firePersonButton_Click(object sender, EventArgs e)
+        {
+            Factory factory = GetSelectedFactory();
+            if (factory == null)
+                return;
+
+            string nameOfPersonToDelete = (string)personsCompoBox.SelectedItem;
+
+            if (String.IsNullOrEmpty(nameOfPersonToDelete))
+                MessageBox.Show("Can not delete user with empty name"
+                    , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            bool status = factory.FirePerson(nameOfPersonToDelete);
+            if(status == true)
+            {
+                MessageBox.Show("Person was successfully deleted!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                UpdateInputs();
+            }
+            else
+            {
+                MessageBox.Show("Can not delete person!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateInputs()
+        {
+            if (factoriesListView.SelectedItems.Count > 0)
+            {
+                var factory = (Factory)factoriesListView.SelectedItems[0].Tag;
+
+                if (factory != null)
+                {
+                    TitleTextBox.Text = factory.Title;
+                    CountOfWorkshopsTextBox.Text = factory.CountOfWorkshop.ToString();
+                    CountOfEmployeeTextBox.Text = factory.CountOfEmployee.ToString();
+                    CountOfMasterTextBox.Text = factory.CountOfMasters.ToString();
+                    EmployeeSalaryTextBox.Text = factory.EmployeeSalary.ParseCentsToString();
+                    MasterSalaryTextBox.Text = factory.MasterSalary.ParseCentsToString();
+                    ProfitFromEmployeeTextBox.Text = factory.ProfitFromEmployee.ParseCentsToString();
+                    ProfitFromMasterTextBox.Text = factory.ProfitFromMaster.ParseCentsToString();
+
+                    personsCompoBox.DataSource = factory.GetPersons()
+                        .Select(x => x.Name).ToArray();
+                }
+            }
+        }
+
+        private void openPersonButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Factory factory = GetSelectedFactory();
+                if (factory == null)
+                    return;
+
+                string nameOfPersonToDelete = (string)personsCompoBox.SelectedItem; if (String.IsNullOrEmpty(nameOfPersonToDelete))
+                    MessageBox.Show("Can not delete user with empty name"
+                        , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                PersonBase person = factory.GetPersonByName(nameOfPersonToDelete);
+
+                var employeeForm = new EmployeeForm(person, "123");
+
+                employeeForm.Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
