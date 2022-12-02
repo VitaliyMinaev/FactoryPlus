@@ -1,4 +1,7 @@
+using FactoryForm.Domain.Abstract;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FactoryForm.Domain
 {
@@ -7,9 +10,47 @@ namespace FactoryForm.Domain
         /* Properties */
         public string Title { get; set; }
 
-        public int CountOfWorkshop { get; set; }
-        public int CountOfEmployee { get; set; }
-        public int CountOfMasters { get; set; }
+        public int CountOfWorkshop 
+        { 
+            get
+            {
+                return _workShops.Count;
+            }
+            private set => CountOfWorkshop = value; 
+        }
+        public int CountOfEmployee 
+        { 
+            get
+            {
+                int count = 0;
+                foreach (var pair in _employees)
+                {
+                    if (pair.Value is Employee)
+                        count += 1;
+                }
+                return count;
+            }
+            private set => CountOfEmployee = value;
+        }
+        public int CountOfMasters
+        {
+            get
+            {
+                int count = 0;
+                foreach (var pair in _employees)
+                {
+                    if (pair.Value is Master)
+                        count += 1;
+                }
+                return count;
+            }
+            private set => CountOfMasters = value;
+        }
+        public string CountOfDetails { get; private set; }
+
+        private List<Workshop> _workShops;
+        private Dictionary<string, PersonBase> _employees;
+
 
         /* Money contains in cents (type integer) */
         public int EmployeeSalary { get; set; }
@@ -46,6 +87,16 @@ namespace FactoryForm.Domain
             ProfitFromMaster = profitFromMaster;
         }
 
+        public Factory(string titleOfFactory, IEnumerable<Workshop> workshops,
+            IEnumerable<PersonBase> employee)
+        {
+            Title = titleOfFactory;
+            _workShops = workshops.ToList();
+
+            _employees = employee.Select(x => new { x.PersonId, x } )
+                .ToDictionary(x => x.PersonId, x => x.x);
+        }
+
         /* Copy Constructor */
         public Factory(Factory other)
         {
@@ -55,9 +106,9 @@ namespace FactoryForm.Domain
             }
 
             Title = other.Title;
-            CountOfWorkshop = other.CountOfWorkshop;
-            CountOfEmployee = other.CountOfEmployee;
-            CountOfMasters = other.CountOfMasters;
+            _workShops = other._workShops;
+            _employees = other._employees;
+
             EmployeeSalary = other.EmployeeSalary;
             MasterSalary = other.MasterSalary;
             ProfitFromEmployee = other.ProfitFromEmployee;
@@ -90,6 +141,30 @@ namespace FactoryForm.Domain
                 return false;
             }
         }
+        public bool HireEmployee(Employee employee)
+        {
+            if (EstimateNumberOfEmployeeAndMaster(CountOfEmployee + 1, CountOfMasters))
+            {
+                _employees.Add(employee.PersonId, employee);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool HireMaster(Master master)
+        {
+            if (EstimateNumberOfEmployeeAndMaster(CountOfEmployee, CountOfMasters + 1))
+            {
+                _employees.Add(master.PersonId, master);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public bool FireEmployee()
         {
@@ -115,7 +190,19 @@ namespace FactoryForm.Domain
                 return false;
             }
         }
+        public bool FirePerson(string personId)
+        {
+            foreach (var item in _employees)
+            {
+                if (item.Value.PersonId == personId)
+                {
+                    _employees.Remove(item.Key);
+                    return true;
+                }
+            }
 
+            return false;
+        }
 
         public int CompareTo(Factory other)
         {
@@ -124,11 +211,15 @@ namespace FactoryForm.Domain
                 throw new ArgumentNullException($"Comparable factory can not be null");
             }
 
-            if (this.CountOfWorkshop > other.CountOfWorkshop)
+            if (this.CountOfWorkshop > other.CountOfWorkshop 
+                && this.CountOfEmployee > other.CountOfEmployee
+                && this.CountOfMasters > other.CountOfMasters)
             {
                 return 1;
             }
-            else if (this.CountOfWorkshop < other.CountOfWorkshop)
+            else if (this.CountOfWorkshop < other.CountOfWorkshop
+                && this.CountOfEmployee < other.CountOfEmployee
+                && this.CountOfMasters < other.CountOfMasters)
             {
                 return -1;
             }
@@ -136,28 +227,6 @@ namespace FactoryForm.Domain
             {
                 return 0;
             }
-        }
-        public static Factory operator +(Factory first, Factory second)
-        {
-            if (first == null || second == null)
-            {
-                throw new ArgumentNullException($"Factory in argument can not be null");
-            }
-
-            var newFactory = new Factory();
-
-            newFactory.Title = first.Title + " - " + second.Title;
-            newFactory.CountOfWorkshop = first.CountOfWorkshop + second.CountOfWorkshop;
-            newFactory.CountOfEmployee = first.CountOfEmployee + second.CountOfEmployee;
-            newFactory.CountOfMasters = first.CountOfMasters + second.CountOfMasters;
-            newFactory.EmployeeSalary = first.EmployeeSalary > second.EmployeeSalary ? first.EmployeeSalary : second.EmployeeSalary;
-            newFactory.MasterSalary = first.MasterSalary > second.MasterSalary ? first.MasterSalary : second.MasterSalary;
-            newFactory.ProfitFromEmployee = first.ProfitFromEmployee > second.ProfitFromEmployee
-                ? first.ProfitFromEmployee : second.ProfitFromEmployee;
-            newFactory.ProfitFromMaster = first.ProfitFromMaster > second.ProfitFromMaster
-                ? first.ProfitFromMaster : second.ProfitFromMaster;
-
-            return newFactory;
         }
 
         private bool EstimateNumberOfEmployeeAndMaster(int countOfEmployee, int countOfMasters)

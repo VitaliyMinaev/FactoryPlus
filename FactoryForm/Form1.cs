@@ -236,24 +236,6 @@ namespace FactoryForm
             }
         }
 
-        private void UniteFactoriesButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Tuple<Factory, Factory> factories = GetFactoriesByTitleFromListView
-                (UnitedFactory1TextBox.Text, UnitedFactory2TextBox.Text);
-
-                Factory firstToUnite = factories.Item1, secondToUnite = factories.Item2;
-
-                Factory unitedFactory = firstToUnite + secondToUnite;
-                AddFactoryToListView(unitedFactory);
-            }
-            catch (InvalidDataException exception)
-            {
-                MessageBox.Show(exception.Message, "Error");
-            }
-        }
-
         private void CompareFactoriesButton_Click(object sender, EventArgs e)
         {
             try

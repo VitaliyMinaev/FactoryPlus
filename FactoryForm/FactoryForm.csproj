@@ -74,7 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Abstract\Person.cs" />
+    <Compile Include="Domain\Employee.cs" />
     <Compile Include="Domain\Factory.cs" />
+    <Compile Include="Domain\Master.cs" />
+    <Compile Include="Domain\Workshop.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

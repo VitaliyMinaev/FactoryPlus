@@ -68,12 +68,6 @@
             this.ComparedFactory2TextBox = new System.Windows.Forms.TextBox();
             this.ComparedFactory1TextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.UniteFactoriesButton = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.UnitedFactory2TextBox = new System.Windows.Forms.TextBox();
-            this.UnitedFactory1TextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +101,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(379, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(385, 546);
+            this.panel1.Size = new System.Drawing.Size(385, 565);
             this.panel1.TabIndex = 9;
             // 
             // FireMasterButton
@@ -379,7 +373,7 @@
             this.factoriesListView.Location = new System.Drawing.Point(14, 35);
             this.factoriesListView.Name = "factoriesListView";
             this.factoriesListView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.factoriesListView.Size = new System.Drawing.Size(359, 314);
+            this.factoriesListView.Size = new System.Drawing.Size(359, 432);
             this.factoriesListView.TabIndex = 8;
             this.factoriesListView.UseCompatibleStateImageBehavior = false;
             this.factoriesListView.View = System.Windows.Forms.View.List;
@@ -392,7 +386,7 @@
             this.Unload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Unload.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Unload.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Unload.Location = new System.Drawing.Point(618, 587);
+            this.Unload.Location = new System.Drawing.Point(618, 606);
             this.Unload.Name = "Unload";
             this.Unload.Size = new System.Drawing.Size(146, 37);
             this.Unload.TabIndex = 13;
@@ -407,7 +401,7 @@
             this.Load.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Load.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Load.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Load.Location = new System.Drawing.Point(465, 587);
+            this.Load.Location = new System.Drawing.Point(465, 606);
             this.Load.Name = "Load";
             this.Load.Size = new System.Drawing.Size(148, 37);
             this.Load.TabIndex = 12;
@@ -454,15 +448,9 @@
             this.panel2.Controls.Add(this.ComparedFactory2TextBox);
             this.panel2.Controls.Add(this.ComparedFactory1TextBox);
             this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.UniteFactoriesButton);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.UnitedFactory2TextBox);
-            this.panel2.Controls.Add(this.UnitedFactory1TextBox);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(14, 355);
+            this.panel2.Location = new System.Drawing.Point(14, 473);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(359, 338);
+            this.panel2.Size = new System.Drawing.Size(359, 229);
             this.panel2.TabIndex = 14;
             // 
             // label18
@@ -471,7 +459,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(260, 257);
+            this.label18.Location = new System.Drawing.Point(260, 149);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(65, 20);
             this.label18.TabIndex = 45;
@@ -485,7 +473,7 @@
             this.CalculateProfitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CalculateProfitButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CalculateProfitButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CalculateProfitButton.Location = new System.Drawing.Point(209, 288);
+            this.CalculateProfitButton.Location = new System.Drawing.Point(209, 180);
             this.CalculateProfitButton.Name = "CalculateProfitButton";
             this.CalculateProfitButton.Size = new System.Drawing.Size(141, 33);
             this.CalculateProfitButton.TabIndex = 44;
@@ -499,7 +487,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProfitSumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProfitSumTextBox.Location = new System.Drawing.Point(5, 291);
+            this.ProfitSumTextBox.Location = new System.Drawing.Point(5, 183);
             this.ProfitSumTextBox.Name = "ProfitSumTextBox";
             this.ProfitSumTextBox.Size = new System.Drawing.Size(198, 30);
             this.ProfitSumTextBox.TabIndex = 43;
@@ -513,7 +501,7 @@
             this.CompareFactoriesButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CompareFactoriesButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CompareFactoriesButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CompareFactoriesButton.Location = new System.Drawing.Point(209, 213);
+            this.CompareFactoriesButton.Location = new System.Drawing.Point(209, 105);
             this.CompareFactoriesButton.Name = "CompareFactoriesButton";
             this.CompareFactoriesButton.Size = new System.Drawing.Size(141, 33);
             this.CompareFactoriesButton.TabIndex = 37;
@@ -528,7 +516,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(4, 226);
+            this.label17.Location = new System.Drawing.Point(4, 118);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(122, 20);
             this.label17.TabIndex = 42;
@@ -540,7 +528,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(258, 182);
+            this.label15.Location = new System.Drawing.Point(258, 74);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 20);
             this.label15.TabIndex = 41;
@@ -552,7 +540,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProfitFactoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProfitFactoryTextBox.Location = new System.Drawing.Point(5, 252);
+            this.ProfitFactoryTextBox.Location = new System.Drawing.Point(5, 144);
             this.ProfitFactoryTextBox.Name = "ProfitFactoryTextBox";
             this.ProfitFactoryTextBox.Size = new System.Drawing.Size(345, 30);
             this.ProfitFactoryTextBox.TabIndex = 42;
@@ -563,7 +551,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(258, 146);
+            this.label16.Location = new System.Drawing.Point(258, 38);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 20);
             this.label16.TabIndex = 40;
@@ -575,7 +563,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComparedFactory2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ComparedFactory2TextBox.Location = new System.Drawing.Point(5, 177);
+            this.ComparedFactory2TextBox.Location = new System.Drawing.Point(5, 69);
             this.ComparedFactory2TextBox.Name = "ComparedFactory2TextBox";
             this.ComparedFactory2TextBox.Size = new System.Drawing.Size(345, 30);
             this.ComparedFactory2TextBox.TabIndex = 39;
@@ -586,7 +574,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComparedFactory1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ComparedFactory1TextBox.Location = new System.Drawing.Point(5, 141);
+            this.ComparedFactory1TextBox.Location = new System.Drawing.Point(5, 33);
             this.ComparedFactory1TextBox.Name = "ComparedFactory1TextBox";
             this.ComparedFactory1TextBox.Size = new System.Drawing.Size(345, 30);
             this.ComparedFactory1TextBox.TabIndex = 38;
@@ -598,86 +586,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(4, 115);
+            this.label14.Location = new System.Drawing.Point(4, 7);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(147, 20);
             this.label14.TabIndex = 36;
             this.label14.Text = "Compare factories";
-            // 
-            // UniteFactoriesButton
-            // 
-            this.UniteFactoriesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UniteFactoriesButton.BackColor = System.Drawing.SystemColors.Control;
-            this.UniteFactoriesButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.UniteFactoriesButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.UniteFactoriesButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UniteFactoriesButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.UniteFactoriesButton.Location = new System.Drawing.Point(209, 102);
-            this.UniteFactoriesButton.Name = "UniteFactoriesButton";
-            this.UniteFactoriesButton.Size = new System.Drawing.Size(141, 33);
-            this.UniteFactoriesButton.TabIndex = 32;
-            this.UniteFactoriesButton.Text = "Unite";
-            this.UniteFactoriesButton.UseVisualStyleBackColor = false;
-            this.UniteFactoriesButton.Click += new System.EventHandler(this.UniteFactoriesButton_Click);
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(258, 71);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(79, 20);
-            this.label13.TabIndex = 35;
-            this.label13.Text = "Factory 2";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(258, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 20);
-            this.label12.TabIndex = 34;
-            this.label12.Text = "Factory 1";
-            // 
-            // UnitedFactory2TextBox
-            // 
-            this.UnitedFactory2TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnitedFactory2TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UnitedFactory2TextBox.Location = new System.Drawing.Point(5, 66);
-            this.UnitedFactory2TextBox.Name = "UnitedFactory2TextBox";
-            this.UnitedFactory2TextBox.Size = new System.Drawing.Size(345, 30);
-            this.UnitedFactory2TextBox.TabIndex = 33;
-            // 
-            // UnitedFactory1TextBox
-            // 
-            this.UnitedFactory1TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnitedFactory1TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UnitedFactory1TextBox.Location = new System.Drawing.Point(5, 30);
-            this.UnitedFactory1TextBox.Name = "UnitedFactory1TextBox";
-            this.UnitedFactory1TextBox.Size = new System.Drawing.Size(345, 30);
-            this.UnitedFactory1TextBox.TabIndex = 32;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(4, 7);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 20);
-            this.label8.TabIndex = 32;
-            this.label8.Text = "Unite factories";
             // 
             // Form1
             // 
@@ -732,12 +645,6 @@
         private System.Windows.Forms.Button FireEmployeeButton;
         private System.Windows.Forms.Button HireEmployeeButton;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox UnitedFactory2TextBox;
-        private System.Windows.Forms.TextBox UnitedFactory1TextBox;
-        private System.Windows.Forms.Button UniteFactoriesButton;
         private System.Windows.Forms.Button CompareFactoriesButton;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
