@@ -14,12 +14,12 @@ namespace FactoryForm.Domain
         {
             get => _salary;
         }
-        public bool HigherTechnicalEducation { get; set; }
+        public int CountOfCertificates { get; set; }
 
-        public Master(string name, string workshopId, bool higherTechnicalEducation)
+        public Master(string name, string workshopId, int countOfCertificates)
             : base(name, workshopId)
         {
-            HigherTechnicalEducation = higherTechnicalEducation;
+            CountOfCertificates = countOfCertificates;
         }
     }
 }

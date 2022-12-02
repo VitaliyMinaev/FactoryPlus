@@ -19,12 +19,30 @@ namespace FactoryForm
         public EmployeeForm()
         {
             InitializeComponent();
+
+            PrepareEmployeeElements();
         }
         public EmployeeForm(Factory currentFactory, string[] workShops)
         {
             InitializeComponent();
             _factory = currentFactory;
             _workshops = workShops;
+            PrepareEmployeeElements();
+        }
+
+        private void PrepareEmployeeElements()
+        {
+            certificatesnumericUpDown.Enabled = false;
+            salaryNumericUpDown.Value = 15000;
+            higherTechnicalEducationRadioButton.Enabled = true;
+            noHigherTechnicalEducationRadioButton.Enabled = true;
+        }
+        private void PrepareMasterElements()
+        {
+            certificatesnumericUpDown.Enabled = true;
+            salaryNumericUpDown.Value = 40000;
+            higherTechnicalEducationRadioButton.Enabled = false;
+            noHigherTechnicalEducationRadioButton.Enabled = false;
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e)
@@ -38,38 +56,46 @@ namespace FactoryForm
         {
             _isEmployee = !_isEmployee;
 
-            higherEducationPanel.Visible = true;
-            salaryNumericUpDown.Value = 15000;
+            PrepareEmployeeElements();
         }
 
         private void masterRadioButton_CheckedChanged_1(object sender, EventArgs e)
         {
-            higherEducationPanel.Visible = false;
-            salaryNumericUpDown.Value = 40000;
+            PrepareMasterElements();
         }
 
         private void addPerson_Click(object sender, EventArgs e)
         {
             try
             {
+                bool operationStatus = false;
                 if (_isEmployee == true)
                 {
                     var higherTechnicalEducation = higherTechnicalEducationRadioButton.Checked;
                     var employee = new Employee(nameTitleBox.Text, workshopsCompoBox.Text,
                         higherTechnicalEducation);
 
-                    _factory.HireEmployee(employee);
+                    operationStatus = _factory.HireEmployee(employee);
                 }
                 else
                 {
-                    var master = new Master(nameTitleBox.Text, workshopsCompoBox.Text, true);
-                    _factory.HireMaster(master);
+                    var master = new Master(nameTitleBox.Text, workshopsCompoBox.Text, 
+                        (int)certificatesnumericUpDown.Value);
+                    operationStatus = _factory.HireMaster(master);
                 }
 
-                MessageBox.Show($"Person: {nameTitleBox.Text} has been successfully added!", 
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.Close();
+                if (operationStatus == false)
+                {
+                    MessageBox.Show($"Incorrect balance beetween employee and masters!",
+                        "Fail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show($"Person: {nameTitleBox.Text} has been successfully added!",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    this.Close();
+                }
             }
             catch (Exception exc)
             {

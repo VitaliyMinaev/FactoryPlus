@@ -67,24 +67,21 @@ namespace FactoryForm.Domain
             CountOfWorkshop = CountOfEmployee = CountOfMasters = 0;
             EmployeeSalary = MasterSalary = 0;
             ProfitFromEmployee = ProfitFromMaster = 0;
+
+            _employees = new Dictionary<string, PersonBase>();
+            _workShops = new List<Workshop>();
         }
 
-        public Factory(string titleOfFactory, int countOfWorkshop, int countOfEmployee, int countOfMasters,
-            int employeeSalary, int masterSalary, int profitFromEmployee, int profitFromMaster)
+        public Factory(string titleOfFactory, int employeeSalary, int masterSalary, int profitFromEmployee, int profitFromMaster)
         {
-            if (EstimateNumberOfEmployeeAndMaster(countOfEmployee, countOfMasters) == false)
-            {
-                throw new ArgumentException("Inappropriate balance between employee and masters");
-            }
-
             Title = titleOfFactory;
-            CountOfWorkshop = countOfWorkshop;
-            CountOfEmployee = countOfEmployee;
-            CountOfMasters = countOfMasters;
             EmployeeSalary = employeeSalary;
             MasterSalary = masterSalary;
             ProfitFromEmployee = profitFromEmployee;
             ProfitFromMaster = profitFromMaster;
+
+            _employees = new Dictionary<string, PersonBase>();
+            _workShops = new List<Workshop>();
         }
 
         public Factory(string titleOfFactory, IEnumerable<Workshop> workshops,

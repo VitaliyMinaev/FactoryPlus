@@ -35,9 +35,6 @@ namespace FactoryForm
             try
             {
                 var factory = new Factory(TitleTextBox.Text,
-                    int.Parse(CountOfWorkshopsTextBox.Text),
-                    int.Parse(CountOfEmployeeTextBox.Text),
-                    int.Parse(CountOfMasterTextBox.Text),
                     MoneyParser.ParseStringToCents(EmployeeSalaryTextBox.Text),
                     MoneyParser.ParseStringToCents(MasterSalaryTextBox.Text),
                     MoneyParser.ParseStringToCents(ProfitFromEmployeeTextBox.Text),
@@ -133,24 +130,6 @@ namespace FactoryForm
             }
         }
 
-        private void HireEmployeeButton_Click(object sender, EventArgs e)
-        {
-            if (factoriesListView.SelectedItems.Count == 0)
-                return;
-
-            var factory = (Factory)factoriesListView.SelectedItems[0].Tag;
-            bool status = factory.HireEmployee();
-            if (status == false)
-            {
-                MessageBox.Show("Inappropriate balance between employee and masters", "Error");
-            }
-            else
-            {
-                CountOfMasterTextBox.Text = factory.CountOfMasters.ToString();
-            }
-
-            CountOfEmployeeTextBox.Text = factory.CountOfEmployee.ToString();
-        }
         private void FireEmployeeButton_Click(object sender, EventArgs e)
         {
             if (factoriesListView.SelectedItems.Count == 0)
@@ -169,22 +148,6 @@ namespace FactoryForm
             CountOfEmployeeTextBox.Text = factory.CountOfEmployee.ToString();
         }
 
-        private void HireMasterButton_Click(object sender, EventArgs e)
-        {
-            if (factoriesListView.SelectedItems.Count == 0)
-                return;
-
-            var factory = (Factory)factoriesListView.SelectedItems[0].Tag;
-            bool status = factory.HireMaster();
-            if (status == false)
-            {
-                MessageBox.Show("Inappropriate balance between employee and masters", "Error");
-            }
-            else
-            {
-                CountOfMasterTextBox.Text = factory.CountOfMasters.ToString();
-            }
-        }
         private void FireMasterButton_Click(object sender, EventArgs e)
         {
             if (factoriesListView.SelectedItems.Count == 0)
