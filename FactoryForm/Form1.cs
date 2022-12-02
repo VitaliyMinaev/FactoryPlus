@@ -328,5 +328,29 @@ namespace FactoryForm
 
             MessageBox.Show($"Your profit for 1 month: {profit}$", "Profit");
         }
+
+        private void workshopFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var workshopForm = new WorkshopForm();
+            workshopForm.Show();
+        }
+
+        private void employeeFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var workshopForm = new EmployeeForm();
+            workshopForm.Show();
+        }
+
+        private void hirePersonButton_Click(object sender, EventArgs e)
+        {
+            if (factoriesListView.SelectedItems.Count == 0)
+                return;
+
+            var factory = (Factory)factoriesListView.SelectedItems[0].Tag;
+            var workshopForm = new EmployeeForm(factory, 
+                new[] { "work 1", "work 2"});
+
+            workshopForm.Show();
+        }
     }
 }

@@ -11,5 +11,11 @@ namespace FactoryForm.Domain.Abstract
         public string PersonId { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
         public string WorkShopId { get; set; }
+
+        public PersonBase(string name, string workshopId)
+        {
+            Name = name;
+            WorkShopId = workshopId;
+        }
     }
 }

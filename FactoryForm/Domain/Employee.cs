@@ -15,5 +15,11 @@ namespace FactoryForm.Domain
             get => _salary;
         }
         public bool HigherTechnicalEducation { get; set; }
+
+        public Employee(string name, string workshopId, bool higherTechnicalEducation)
+            : base (name, workshopId)
+        {
+            HigherTechnicalEducation = higherTechnicalEducation;
+        }
     }
 }
