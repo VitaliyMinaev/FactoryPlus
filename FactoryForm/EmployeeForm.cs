@@ -1,13 +1,6 @@
 ﻿using FactoryForm.Domain;
 using FactoryForm.Domain.Abstract;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FactoryForm
@@ -15,7 +8,7 @@ namespace FactoryForm
     public partial class EmployeeForm : Form
     {
         private Factory _factory;
-        private string[] _workshops = { "workshop 1", "workshop 2", "workshop 3" };
+        private string[] _workshops;
         private bool _isEmployee = true;
         public EmployeeForm()
         {
@@ -129,6 +122,11 @@ namespace FactoryForm
                 MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

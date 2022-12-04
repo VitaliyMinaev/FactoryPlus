@@ -16,6 +16,9 @@ namespace FactoryForm
     public partial class Form1 : Form
     {
         readonly private string _pathToFactoryDataFile = @"FactoryData\FactoriesData.json";
+        readonly private string _pathToWorkShopsDataFile = @"FactoryData\WorkshopsData.json";
+        readonly private string _pathToPersonDataFile = @"FactoryData\PersonalData.json";
+
         public Form1()
         {
             InitializeComponent();
@@ -121,6 +124,45 @@ namespace FactoryForm
             }
 
             await SerializeAsync(factories);
+
+            UnloadAsync();
+        }
+
+        private async void UnloadAsync()
+        {
+            var workshops = new List<Workshop>();
+            var person = new List<PersonBase>();
+            foreach (ListViewItem item in factoriesListView.Items)
+            {
+                var factory = (Factory)item.Tag;
+
+                foreach (var workshop in factory.GetWorkshops())
+                {
+                    workshops.Add(workshop);
+                }
+                foreach (var pair in factory.Employees)
+                {
+                    person.Add(pair.Value);
+                }
+            }
+
+            await SerializeWorkshopsAsync(workshops);
+            await SerializePeopleAsync(person);
+        }
+
+        private async Task SerializeWorkshopsAsync(List<Workshop> workshops)
+        {
+            using (var stream = new FileStream(_pathToWorkShopsDataFile, FileMode.OpenOrCreate))
+            {
+                await JsonSerializer.SerializeAsync<List<Workshop>>(stream, workshops);
+            }
+        }
+        private async Task SerializePeopleAsync(List<PersonBase> people)
+        {
+            using (var stream = new FileStream(_pathToPersonDataFile, FileMode.OpenOrCreate))
+            {
+                await JsonSerializer.SerializeAsync<List<PersonBase>>(stream, people);
+            }
         }
         private async Task SerializeAsync(List<Factory> factories)
         {
@@ -313,8 +355,8 @@ namespace FactoryForm
             if (factory == null)
                 return;
 
-            var employeeForm = new EmployeeForm(factory,
-                new[] { "work 1", "work 2" });
+            string[] workshopsTitles = factory.GetWorkshops().Select(x => x.WorkShopId).ToArray();
+            var employeeForm = new EmployeeForm(factory, workshopsTitles);
             
             employeeForm.ShowDialog();
             UpdateInputs();
@@ -397,7 +439,7 @@ namespace FactoryForm
 
                 PersonBase person = factory.GetPersonByName(nameOfPersonToDelete);
 
-                var employeeForm = new EmployeeForm(person, "123");
+                var employeeForm = new EmployeeForm(person, person.WorkShopId);
 
                 employeeForm.Show();
             }
@@ -430,6 +472,11 @@ namespace FactoryForm
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Unloading(object sender, FormClosingEventArgs e)
         {
 
         }
