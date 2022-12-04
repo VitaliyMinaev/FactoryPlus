@@ -15,6 +15,7 @@ namespace FactoryForm
 {
     public partial class Form1 : Form
     {
+        readonly private string _pathToFactoryDataFile = @"FactoryData\FactoriesData.json";
         public Form1()
         {
             InitializeComponent();
@@ -101,7 +102,7 @@ namespace FactoryForm
         }
         private async Task<List<Factory>> DeserializeAsync()
         {
-            using (FileStream stream = new FileStream("FactoriesData.json", FileMode.OpenOrCreate))
+            using (FileStream stream = new FileStream(_pathToFactoryDataFile, FileMode.OpenOrCreate))
             {
                 List<Factory> factories = await JsonSerializer.DeserializeAsync<List<Factory>>(stream);
 
@@ -123,7 +124,7 @@ namespace FactoryForm
         }
         private async Task SerializeAsync(List<Factory> factories)
         {
-            using (var stream = new FileStream("FactoriesData.json", FileMode.OpenOrCreate))
+            using (var stream = new FileStream(_pathToFactoryDataFile, FileMode.OpenOrCreate))
             {
                 await JsonSerializer.SerializeAsync<List<Factory>>(stream, factories);
             }
@@ -405,6 +406,32 @@ namespace FactoryForm
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void workshopButton_Click(object sender, EventArgs e)
+        {
+            Factory factory = GetSelectedFactory();
+            if (factory == null)
+                return;
+
+            var workshopForm = new WorkshopForm(factory, factory.GetWorkshops());
+            workshopForm.ShowDialog();
+            UpdateInputs();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

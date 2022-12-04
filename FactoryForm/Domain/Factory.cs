@@ -14,43 +14,59 @@ namespace FactoryForm.Domain
         { 
             get
             {
+                if (_workShops == null)
+                    return 0;
+
                 return _workShops.Count;
             }
-            private set => CountOfWorkshop = value; 
+            private set { }
         }
         public int CountOfEmployee 
         { 
             get
             {
+                if (_employees == null)
+                    return 0;
                 int count = 0;
                 foreach (var pair in _employees)
                 {
-                    if (pair.Value is Employee)
+                    if (IsEmployee(pair.Key) == true)
                         count += 1;
                 }
                 return count;
             }
-            private set => CountOfEmployee = value;
+            private set { }
         }
         public int CountOfMasters
         {
             get
             {
+                if (_employees == null)
+                    return 0;
                 int count = 0;
                 foreach (var pair in _employees)
                 {
-                    if (pair.Value is Master)
+                    if (IsEmployee(pair.Key) == false)
                         count += 1;
                 }
                 return count;
             }
-            private set => CountOfMasters = value;
+            private set { }
         }
-        public string CountOfDetails { get; private set; }
+        public string CountOfDetails { get; set; }
 
         private List<Workshop> _workShops;
+        public List<Workshop> WorkShops 
+        {
+            get => _workShops;
+            set => _workShops = value;
+        }
         private Dictionary<string, PersonBase> _employees;
-
+        public Dictionary<string, PersonBase> Employees
+        {
+            get => _employees;
+            set => _employees = value;
+        }
 
         /* Money contains in cents (type integer) */
         public int EmployeeSalary { get; set; }
@@ -142,7 +158,7 @@ namespace FactoryForm.Domain
         {
             if (EstimateNumberOfEmployeeAndMaster(CountOfEmployee + 1, CountOfMasters))
             {
-                _employees.Add(employee.PersonId, employee);
+                _employees.Add($"Employee: {employee.PersonId}", employee);
                 return true;
             }
             else
@@ -154,7 +170,7 @@ namespace FactoryForm.Domain
         {
             if (EstimateNumberOfEmployeeAndMaster(CountOfEmployee, CountOfMasters + 1))
             {
-                _employees.Add(master.PersonId, master);
+                _employees.Add($"Master: {master.PersonId}", master);
                 return true;
             }
             else
@@ -233,6 +249,15 @@ namespace FactoryForm.Domain
             throw new ArgumentException($"Can not find person with name: {personName}");
         }
 
+
+        public void AddWorkshop(Workshop workshop)
+        {
+            _workShops.Add(workshop);
+        }
+        public void RemoveWorkshop(Workshop workshop)
+        {
+            _workShops.Remove(workshop);
+        }
         public IEnumerable<Workshop> GetWorkshops()
         {
             foreach (var item in _workShops)
@@ -276,6 +301,19 @@ namespace FactoryForm.Domain
             {
                 return false;
             }
+        }
+        private bool IsEmployee(string key)
+        {
+            if(key.StartsWith("Employee: ") == true)
+            {
+                return true;
+            }
+            else if(key.StartsWith("Master: ") == true)
+            {
+                return false;
+            }
+
+            throw new ArgumentException("Invalid key format");
         }
     }
 }

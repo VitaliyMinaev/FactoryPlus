@@ -30,6 +30,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.openPersonButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.personsCompoBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -70,7 +71,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.workshopFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openPersonButton = new System.Windows.Forms.Button();
+            this.workshopButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -82,6 +83,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.workshopButton);
             this.panel1.Controls.Add(this.openPersonButton);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.personsCompoBox);
@@ -107,6 +109,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(385, 580);
             this.panel1.TabIndex = 9;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // openPersonButton
+            // 
+            this.openPersonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.openPersonButton.BackColor = System.Drawing.SystemColors.Control;
+            this.openPersonButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.openPersonButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openPersonButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.openPersonButton.Location = new System.Drawing.Point(90, 539);
+            this.openPersonButton.Name = "openPersonButton";
+            this.openPersonButton.Size = new System.Drawing.Size(135, 33);
+            this.openPersonButton.TabIndex = 35;
+            this.openPersonButton.Text = "Get info";
+            this.openPersonButton.UseVisualStyleBackColor = false;
+            this.openPersonButton.Click += new System.EventHandler(this.openPersonButton_Click);
             // 
             // button2
             // 
@@ -275,7 +293,7 @@
             this.CountOfWorkshopsTextBox.Location = new System.Drawing.Point(19, 84);
             this.CountOfWorkshopsTextBox.Name = "CountOfWorkshopsTextBox";
             this.CountOfWorkshopsTextBox.ReadOnly = true;
-            this.CountOfWorkshopsTextBox.Size = new System.Drawing.Size(347, 30);
+            this.CountOfWorkshopsTextBox.Size = new System.Drawing.Size(153, 30);
             this.CountOfWorkshopsTextBox.TabIndex = 14;
             this.CountOfWorkshopsTextBox.TextChanged += new System.EventHandler(this.TextBoxes_TextChanged);
             // 
@@ -409,6 +427,7 @@
             this.label2.Size = new System.Drawing.Size(92, 21);
             this.label2.TabIndex = 11;
             this.label2.Text = "Information";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -419,6 +438,7 @@
             this.label1.Size = new System.Drawing.Size(73, 21);
             this.label1.TabIndex = 10;
             this.label1.Text = "Factories";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -607,20 +627,20 @@
             this.employeeFormToolStripMenuItem.Text = "Employee form";
             this.employeeFormToolStripMenuItem.Click += new System.EventHandler(this.employeeFormToolStripMenuItem_Click);
             // 
-            // openPersonButton
+            // workshopButton
             // 
-            this.openPersonButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.openPersonButton.BackColor = System.Drawing.SystemColors.Control;
-            this.openPersonButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.openPersonButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openPersonButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openPersonButton.Location = new System.Drawing.Point(90, 539);
-            this.openPersonButton.Name = "openPersonButton";
-            this.openPersonButton.Size = new System.Drawing.Size(135, 33);
-            this.openPersonButton.TabIndex = 35;
-            this.openPersonButton.Text = "Get info";
-            this.openPersonButton.UseVisualStyleBackColor = false;
-            this.openPersonButton.Click += new System.EventHandler(this.openPersonButton_Click);
+            this.workshopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.workshopButton.BackColor = System.Drawing.SystemColors.Control;
+            this.workshopButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.workshopButton.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.workshopButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.workshopButton.Location = new System.Drawing.Point(225, 84);
+            this.workshopButton.Name = "workshopButton";
+            this.workshopButton.Size = new System.Drawing.Size(141, 33);
+            this.workshopButton.TabIndex = 36;
+            this.workshopButton.Text = "Check workshop";
+            this.workshopButton.UseVisualStyleBackColor = false;
+            this.workshopButton.Click += new System.EventHandler(this.workshopButton_Click);
             // 
             // Form1
             // 
@@ -636,6 +656,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(796, 767);
             this.Name = "Form1";
             this.Text = "Factory";
             this.panel1.ResumeLayout(false);
@@ -693,5 +714,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox personsCompoBox;
         private System.Windows.Forms.Button openPersonButton;
+        private System.Windows.Forms.Button workshopButton;
     }
 }

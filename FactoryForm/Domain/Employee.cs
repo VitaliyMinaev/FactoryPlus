@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FactoryForm.Domain
@@ -16,6 +17,11 @@ namespace FactoryForm.Domain
         }
         public bool HigherTechnicalEducation { get; set; }
 
+        [JsonConstructor]
+        public Employee() : base() 
+        {
+            HigherTechnicalEducation = false;
+        }
         public Employee(string name, string workshopId, bool higherTechnicalEducation)
             : base (name, workshopId)
         {
